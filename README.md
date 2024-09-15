@@ -9,7 +9,7 @@ Book Sales: Users can browse and purchase used books from other users.
 Book Selling: Users can list their own books for sale.
 User Profiles: Users can create profiles to manage their donations, purchases, and sales.
 Search Functionality: Users can search for books by title, author, or genre.
-Payment Gateway Integration: (Optional) Integrate a payment gateway to enable online transactions.
+We also have an ADMIN PANEL to create update delete and read books
 
 
 Technologies Used
