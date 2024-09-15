@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<title>Book_Oasis login</title>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+	<title>Login</title>
+	<style>
+		@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: "Poppins", sans-serif;
+			background-color: #e9ecef;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		} 
+
+		.container {
+			background-color: #ffffff;
+			border-radius: 8px;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+			padding: 40px;
+			width: 100%;
+			max-width: 400px;
+		}
+
+		.title {
+			font-size: 28px;
+			font-weight: 500;
+			color: #333333;
+			text-align: center;
+			margin-bottom: 30px;
+		}
+
+		.input-field {
+			position: relative;
+			margin-bottom: 20px;
+		}
+
+		.input-field input {
+			width: 100%;
+			padding: 15px 10px;
+			border: 1px solid #ced4da;
+			border-radius: 25px;
+			font-size: 16px;
+			color: #495057;
+		}
+
+		.input-field i {
+			position: absolute;
+			top: 50%;
+			left: 10px;
+			transform: translateY(-50%);
+			color: #6c757d;
+		}
+
+		button {
+			width: 100%;
+			padding: 15px;
+			border: none;
+			border-radius: 25px;
+			background-color: #e64f26;
+			color: #ffffff;
+			font-size: 16px;
+			font-weight: 500;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		button:hover {
+			background-color: #e64f26;
+		}
+
+		.footer {
+			text-align: center;
+			margin-top: 20px;
+			font-size: 14px;
+			color: #6c757d;
+		}
+
+		.footer a {
+			color: #007bff;
+			text-decoration: none;
+		}
+
+		.footer a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h2 class="title">Login</h2>
+		<form th:action="@{/login1}" method="post">
+			<div class="input-field">
+				<i class="fas fa-user"></i>
+				<input type="text" name="username" placeholder="Username" required />
+			</div>
+			<div class="input-field">
+				<i class="fas fa-lock"></i>
+				<input type="password" name="password" placeholder="Password" required />
+			</div>
+			
+				<button type="submit">Login</button>
+			
+		</form>
+		<div class="footer">
+			<p>Don't have an account? <a href="/signup1">Sign up</a></p>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<title>Book Oasis</title>
+</head>
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: 'Poppins', sans-serif;
+		scroll-behavior: smooth;
+	}
+
+	body {
+		margin: 0;
+	}
+
+	/* Heading */
+	.heading h2 {
+		font-size: 28px;
+		font-weight: 500;
+		border-left: 8px solid #303054;
+		padding: 5px 15px;
+		margin-bottom: 15px;
+	}
+
+	.heading p {
+		font-size: 18px;
+	}
+
+	.heading p span {
+		font-weight: 600;
+		color: #303054;
+	}
+
+	/* Buttons */
+	.btn1 {
+		font-size: 1rem;
+		font-weight: 400;
+		background-color: #303054;
+		color: #fff;
+		padding: 10px 20px;
+		border-radius: 5px;
+		text-decoration: none !important;
+		transition: all 0.5s;
+	}
+
+	.btn1:hover {
+		background-color: #e6edff;
+		color: #303054;
+	}
+
+	/* Header */
+	header {
+		background-color: #303054;
+		width: 100%;
+
+	}
+
+	header .navbar-brand {
+		font-size: 22px;
+		font-weight: 600;
+		color: #fff;
+	}
+
+	nav {
+		padding: 8px 0px !important;
+	}
+
+	.cont-sec {
+		padding: 8px;
+		background-color: #e6edff;
+		width: 100%;
+	}
+
+	.cont-sec .contact-cont {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.cont-sec p {
+		margin: 0;
+	}
+
+	.cont-sec p a {
+		text-decoration: none;
+		color: #303054;
+	}
+
+	.cont-sec .social {
+		text-align: right
+	}
+
+	.cont-sec .social a img {
+		width: 20px;
+		margin-left: 15px;
+	}
+
+	.home-sec {
+		/* height: 100vh; */
+		padding: 100px 0;
+	}
+
+	.home-sec .home-content {
+		align-items: center;
+	}
+
+	.home-sec .home-content h1 {
+		font-size: 2.3rem;
+		font-weight: 600;
+		margin-bottom: 20px;
+
+	}
+
+	.home-sec .home-content h2 span {
+		color: #14e20d;
+	}
+
+	.home-sec .home-content h2 {
+		font-size: 1.8rem;
+		font-weight: 600;
+		margin-bottom: 30px;
+	}
+
+	.home-sec .home-content p {
+		font-size: 1.3rem;
+		margin-bottom: 30px;
+	}
+
+	.home-sec .img-sec {
+		display: flex;
+		justify-content: center;
+	}
+
+	.home-sec .img-sec img {
+		width: 400px;
+	}
+
+	.home-sec .home-content {
+		align-items: center;
+		padding: 150px 0;
+	}
+
+	/* About section */
+	.about-sec {
+		padding: 150px 0;
+		background-color: #e6edff;
+	}
+
+	.about-sec img {
+		width: 350px;
+		border: 5px solid #303054;
+		border-radius: 5px;
+	}
+
+	.about-sec .about-txt p {
+		font-size: 18px;
+	}
+
+
+
+	/* Missions */
+	.mission {
+		padding: 150px 0;
+	}
+
+
+	.gallery-sec {
+		position: relative;
+		padding: 50px 0;
+	}
+
+	.gallery-sec .image-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 15px;
+		justify-content: center;
+		padding: 10px;
+	}
+
+	.gallery-sec .image-container .image {
+		height: 200px;
+		width: 300px;
+		box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+		cursor: pointer;
+		overflow: hidden;
+	}
+
+	.gallery-sec .image-container .image img {
+		height: 100%;
+		width: 100%;
+		border: 5px solid #d4d4d4;
+		object-fit: cover;
+		transition: 0.2s linear;
+	}
+
+	.gallery-sec .image-container .image:hover img {
+		transform: scale(1.1);
+	}
+
+	.gallery-sec .pop-image {
+		position: fixed;
+		left: 0;
+		top: 0;
+		background: rgba(0, 0, 0, 0.8);
+		height: 100%;
+		width: 100%;
+		z-index: 100;
+		display: none;
+	}
+
+	.gallery-sec .pop-image span {
+		position: absolute;
+		top: 120px;
+		right: 50px;
+		font-size: 60px;
+		font-weight: bolder;
+		color: #ffffff;
+		cursor: pointer;
+		z-index: 100;
+	}
+
+	.gallery-sec .pop-image img {
+		position: absolute;
+		top: 55%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		border: 3px solid #ffffff;
+		width: 750px;
+		object-fit: cover;
+	}
+
+
+
+
+
+
+	/* Scroll Bar */
+
+	::-webkit-scrollbar {
+		width: 5px;
+	}
+
+	::-webkit-scrollbar-track {
+		border: 7px solid transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: #303054;
+	}
+
+
+	@media(max-width: 991px) {
+		.home-sec .home-content {
+			padding: 70px 0;
+		}
+
+		.cont-sec p,
+		.cont-sec .social {
+			text-align: center;
+		}
+
+		.home-sec .img-sec img {
+			margin-bottom: 50px;
+		}
+
+		.about-sec .about-img {
+			display: flex;
+			justify-content: center;
+		}
+
+		.about-sec .about-img img {
+			margin-top: 50px;
+		}
+
+		.contact-sec .col-lg-12 {
+			padding: 0;
+		}
+
+		.contact-form textarea.form-control {
+			width: 96%;
+			margin-left: 15px;
+		}
+
+		.gallery-sec .pop-image img {
+			top: 60%;
+			left: 50%;
+			width: 500px;
+		}
+	}
+
+	@media(max-width: 611px) {
+		.about-sec .about-img img {
+			width: 300px;
+		}
+
+		.contact-section .contact-form textarea.form-control {
+			width: 94%;
+		}
+	}
+
+
+	@media(max-width: 551px) {
+
+		header .navbar-brand {
+			font-size: 18px;
+		}
+
+		.gallery-sec .pop-image img {
+			top: 50%;
+		}
+
+		.gallery-sec .pop-image img {
+			width: 300px;
+		}
+	}
+</style>
+
+<body>
+
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand text-white" href="#">Book Oasis</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+					<li class="nav-item">
+						<a class="nav-link text-white" href="available_books">Available Books</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link active text-white" aria-current="page" href="/">Log-Out</a>
+					</li>
+					<!--<li class="nav-item">
+						<a class="nav-link text-white" href="my_books">My Books</a>
+					</li>-->
+				</ul>
+				<div>
+					<a class="nav-link text-white" href="book_register">New Book Register</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="cont-sec">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<p>Contact No : <a href="tel: +9198659****59">+91 9865941759</a></p>
+				</div>
+				<div class="col-lg-6">
+					<p>Gmail: <a href="mail:BookOasis@gmail.com">BookOasis@gmail.com</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<section class="home-sec" id="home">
+		<div class="container">
+			<div class="home-content">
+				<div class="row">
+					<div class="col-lg-6 align-item-center">
+						<div class="home-info">
+							<h1>Individually, we can do so little; together, we can do so much</h1>
+							<h2>We <span>Book Oasis</span> connect readers with the joy of books</h2>
+							<p>At Book Oasis, we strive to share the magic of reading with those in need.</p>
+
+
+
+							<div class="buttons">
+								<a href="/bookDonationForm" class="btn1">Donate now</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 order-first order-lg-last">
+						<div class="img-sec">
+							<img src="images/Oasis_logo.png" alt="home-image">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="mission" id="mission-id">
+		<div class="container">
+			<div class="heading">
+				<h2>Our Missions</h2>
+				<p>We have delivered <span>Wastage</span> or <span>Donations</span> to needy Peoples</p>
+			</div>
+			<div class="gallery-sec">
+				<div class="container">
+					<div class="image-container">
+						<div class="image"><img src="images/gal14.jpg" alt="img"></div>
+						<div class="image"><img src="images/gal12.jpg" alt="img"></div>
+						<div class="image"><img src="images/gal9.jpg" alt="img"></div>
+						<div class="image"><img src="images/gal10.jpg" alt="img"></div>
+						<div class="image"><img src="images/gal11.png" alt="img"></div>
+						<div class="image"><img src="images/gal13.jpg" alt="img"></div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<section class="about-sec" id="about">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 about-img">
+					<img src="images/about5.jpg" alt="about">
+				</div>
+				<div class="col-lg-8 order-first order-lg-last">
+					<div class="heading">
+						<h2>What We Do & Why We Do</h2>
+					</div>
+					<p>At Book Oasis, we believe in the transformative power of reading. Our mission is to foster a
+						community where books are accessible to everyone, especially those who cannot afford them. We
+						facilitate the donation of old books, connecting generous donors with individuals and
+						organizations that can benefit from them. By doing so, we ensure that every book finds a new
+						home and every reader has the opportunity to explore the vast world of literature.</p>
+
+					<p>Our organization not only focuses on collecting and redistributing books but also on promoting
+						literacy and a love for reading. We organize various programs and events, such as reading
+						sessions, book fairs, and workshops, aimed at engaging young readers and encouraging them to
+						develop their reading skills. By creating a supportive environment, we help ignite a passion for
+						literature in underprivileged youth, making reading an integral part of their lives.</p>
+
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+		crossorigin="anonymous"></script>
+
+	<script>		document.querySelectorAll('.image-container img').forEach(image => {
+			image.onclick = () => {
+				document.querySelector('.pop-image').style.display = 'block';
+				document.querySelector('.pop-image img').src = image.getAttribute('src');
+			}
+		});
+
+		document.querySelector('.pop-image span').onclick = () => {
+			document.querySelector('.pop-image').style.display = 'none';
+		}
+	</script>
+
+</body>
+
+</html>
