@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Donation Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 1200px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .left {
+            flex: 1;
+            background: url('images/donate form.jpg') no-repeat center center;
+            background-size: 100% 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .right {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .right h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        .submit-button {
+            background-color: #28a745;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .submit-button:hover {
+            background-color: #218838;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .left {
+                display: none;
+            }
+            .right {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <!-- Background image area -->
+        </div>
+        <div class="right">
+            <h2>Book Donation Form</h2>
+            <form th:action="@{/submit_donate}" th:object="${bookDonationForm}" method="post">
+                <!-- Donor Details -->
+                <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" name="firstName" th:field="*{firstName}" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required>
+                </div>
+                <div class="form-group">
+                    <label for="pincode">Pickup Pincode *</label>
+                    <input type="text" id="pincode" name="pincode" th:field="*{pincode}" required>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">10 digit mobile number *</label>
+                    <input type="tel" id="mobile" name="mobile" th:field="*{mobile}" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Pickup address (Area & street) *</label>
+                    <textarea id="address" name="address" th:field="*{address}" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="state">Select State *</label>
+                    <select id="state" name="state" th:field="*{state}" required>
+                        <option value="">--Select State--</option>
+                        <option th:value="'West Bengal'">West Bengal</option>
+                        <option th:value="'Jharkhand'">Jharkhand</option>
+                        <option th:value="'Uttar Pradesh'">Uttar Pradesh</option>
+                        <option th:value="'Maharashtra'">Maharashtra</option>
+                        <option th:value="'Gujarat'">Gujarat</option>
+                        <option th:value="'Kerala'">Kerala</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="city">City/District/Town *</label>
+                    <input type="text" id="city" name="city" th:field="*{city}" required>
+                </div>
+                <div class="form-group">
+                    <label for="cartons">No. of Books You Want to Donate *</label>
+                    <input type="number" id="cartons" name="cartons" th:field="*{cartons}" required>
+                </div>
+
+                <!-- Book Categories -->
+                <div class="form-group">
+                    <label>Select most suitable book categories</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" th:field="*{categories}" value="NCERT"/> NCERT</label>
+                        <label><input type="checkbox" th:field="*{categories}" value="School"/> School</label>
+                        <label><input type="checkbox" th:field="*{categories}" value="Entrance Exam"/> Entrance Exam</label>
+                        <label><input type="checkbox" th:field="*{categories}" value="Children"/> Children</label>
+                        <label><input type="checkbox" th:field="*{categories}" value="Spiritual"/> Spiritual books</label>
+                        <label><input type="checkbox" th:field="*{categories}" value="Engineering"/> Engineering</label>
+                        <label><input type="checkbox" th:field="*{categories}" value="Others"/> Others</label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <button type="submit" class="submit-button">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
